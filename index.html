@@ -149,6 +149,9 @@
         <a href="#ukhuwah" data-page="ukhuwah">Ukhuwah</a>
         <a href="#motivasi-iman" data-page="motivasi-iman">Motivasi</a>
         <a href="#persiapan-akhirat" data-page="persiapan-akhirat">Akhirat</a>
+        <a href="#video-kajian" data-page="video-kajian">Video Kajian</a>
+        <a href="#kutipan-utama" data-page="kutipan-utama">Kutipan Utama</a>
+        <a href="#inspirasi-harian" data-page="inspirasi-harian">Inspirasi Harian</a>
         <a href="#donasi" data-page="donasi">Donasi</a>
         <a href="#kontak" data-page="kontak">Kontak</a>
       </nav>
@@ -165,6 +168,10 @@
   <main class="container" id="main">
     <!-- HOME -->
     <section id="home" class="page active" tabindex="-1">
+      <div class="card" style="margin-bottom:16px;text-align:center;background:linear-gradient(90deg,var(--green-1),var(--green-2));color:white;padding:16px;border-radius:12px;">
+        <h2 style="margin:0;">Assalamu’alaikum, Selamat Datang di Komunitas Dakwah Al-Hikmah 🌿</h2>
+        <p style="margin:6px 0 0 0;font-size:14px;opacity:0.9;">Mari bersama belajar, berdakwah, dan menebar kebaikan dengan semangat ukhuwah.</p>
+      </div>
       <div class="hero card" role="region" aria-label="Hero">
         <div class="left">
           <h2>Selamat datang — Komunitas Dakwah Al-Hikmah</h2>
@@ -514,6 +521,51 @@
       </div>
     </section>
 
+  
+    <!-- NEW PAGE: Video Kajian -->
+    <section id="video-kajian" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Video Kajian</h2>
+        <p class="muted">Kumpulan video kajian pilihan dari para ustadz Al-Hikmah.</p>
+        <div class="two-col" style="margin-top:12px;gap:18px">
+          <iframe width="100%" height="220" src="https://www.youtube.com/embed/1a2b3c4d5e0" title="Kajian 1" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="220" src="https://www.youtube.com/embed/2b3c4d5e6f7" title="Kajian 2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div style="margin-top:18px">
+          <iframe width="100%" height="320" src="https://www.youtube.com/embed/3c4d5e6f7g8" title="Kajian 3" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW PAGE: Kutipan Utama -->
+    <section id="kutipan-utama" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Kutipan Utama</h2>
+        <p class="muted">Kumpulan ayat dan hadits pilihan yang menjadi pedoman dakwah.</p>
+        <div class="two-col" style="margin-top:12px">
+          <div class="card" style="background:#f3faf6">
+            <blockquote>"Serulah (manusia) kepada jalan Tuhanmu dengan hikmah dan pelajaran yang baik." — <strong>QS. An-Nahl:125</strong></blockquote>
+          </div>
+          <div class="card" style="background:#f3faf6">
+            <blockquote>"Sebaik-baik kalian adalah yang paling bermanfaat bagi orang lain." — <strong>HR. Ahmad</strong></blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW PAGE: Inspirasi Harian -->
+    <section id="inspirasi-harian" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Inspirasi Harian</h2>
+        <p class="muted">Renungan dan pesan singkat untuk menjaga semangat iman setiap hari.</p>
+        <ul class="list" style="margin-top:12px">
+          <li><strong>Hari ini</strong> — Jangan biarkan waktu berlalu tanpa doa.</li>
+          <li><strong>Esok</strong> — Rencanakan amal baik walau kecil.</li>
+          <li><strong>Selalu</strong> — Senyum adalah sedekah yang mudah.</li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -527,6 +579,30 @@
 
   <button id="toTop" class="to-top" aria-label="Kembali ke atas">↑</button>
 
+  
+  <!-- Floating WhatsApp Chat -->
+  <a href="https://wa.me/6285179828031" target="_blank" class="floating-wa" aria-label="Chat WhatsApp">
+    💬
+  </a>
+
+  <style>
+    .floating-wa{
+      position:fixed;
+      bottom:80px;
+      right:18px;
+      background:var(--green-2);
+      color:white;
+      font-size:22px;
+      padding:12px 14px;
+      border-radius:50%;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      text-decoration:none;
+      z-index:100;
+      transition:transform 0.2s ease;
+    }
+    .floating-wa:hover{transform:scale(1.1)}
+  </style>
+
   <!-- GLightbox script -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
@@ -536,7 +612,7 @@
       'home','tentang','program','program-online','profil-ustadz','kegiatan',
       'kajian','artikel','artikel-tematik','galeri','kisah-teladan','doa-harian',
       'fiqih-harian','amar-maruf','ukhuwah','motivasi-iman','persiapan-akhirat',
-      'donasi','kontak'
+      'video-kajian','kutipan-utama','inspirasi-harian','donasi','kontak'
     ];
 
     function showPage(page){
