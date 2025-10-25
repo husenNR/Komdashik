@@ -1,105 +1,228 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Komunitas Dakwah Al-Hikmah</title>
-  <meta name="description" content="Website dakwah siap pakai: kajian, jadwal, artikel, galeri, dan kontak.">
+  <meta name="description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan kegiatan.">
+  <meta name="keywords" content="dakwah, kajian, khutbah, komunitas, islam">
+  <meta property="og:title" content="Komunitas Dakwah Al-Hikmah">
+  <meta property="og:description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan kegiatan.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Komunitas Dakwah Al-Hikmah">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GLightbox (galeri) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
   <style>
-    :root{--green1:#0b8457;--green2:#0fb07a;--bg:#f7fbf8;--card:#ffffff}
+    :root{
+      --green-1:#0b8457;      /* hijau zamrud */
+      --green-2:#0fb07a;
+      --bg:#f7fbf8;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --radius:12px;
+      --maxw:1100px;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,var(--bg),#eef8f1)}
-    header{background:linear-gradient(90deg,var(--green1),var(--green2));color:white;padding:18px 20px;position:sticky;top:0;z-index:10}
-    .container{max-width:1100px;margin:0 auto}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;
+      background:linear-gradient(180deg,var(--bg),#eef8f1);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background .25s ease,color .25s ease;
+      line-height:1.5;
+    }
+    /* Dark mode */
+    body.dark{
+      --bg:#071019;
+      --card:#0b1220;
+      --muted:#9aa6b2;
+      background:linear-gradient(180deg,#04121a,#07202a);
+      color:#e6f0f2;
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:18px}
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter: blur(6px);
+      background:linear-gradient(90deg,var(--green-1),var(--green-2));
+      color:white;padding:14px 0;
+      box-shadow:0 6px 16px rgba(11,132,87,0.12);
+    }
+    .header-inner{display:flex;align-items:center;gap:14px;justify-content:space-between}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand h1{font-size:20px;margin:0}
-    nav{margin-top:8px}
-    nav a{color:white;text-decoration:none;margin-right:14px;font-weight:600}
-    nav a.active{opacity:0.95;text-decoration:underline}
-    main{padding:28px 20px}
-    .hero{display:flex;flex-direction:column;gap:14px;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.4));border-radius:12px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,32,0.06)}
-    .col-8{grid-column:span 8}
-    .col-4{grid-column:span 4}
-    footer{padding:20px;text-align:center;color:#4b5563}
+    .logo{
+      width:52px;height:52px;border-radius:10px;background:white;color:var(--green-1);
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;
+      box-shadow:0 6px 18px rgba(16,24,32,0.06);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .brand small{display:block;font-size:12px;opacity:.92}
+    nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:6px 10px;border-radius:8px;font-weight:600;font-size:14px}
+    nav a[aria-current="page"]{background:rgba(255,255,255,0.12);box-shadow:inset 0 -2px 0 rgba(255,255,255,0.06)}
+    .controls{display:flex;gap:8px;align-items:center}
+    .icon-btn{background:transparent;border:none;color:white;padding:8px;border-radius:8px;cursor:pointer}
+    .icon-btn:focus{outline:2px solid rgba(255,255,255,0.18)}
+    main{padding:26px 0}
+    .hero{
+      display:flex;gap:18px;align-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.5));
+      padding:26px;border-radius:var(--radius);box-shadow:0 8px 28px rgba(16,24,32,0.06);
+      transition:transform .24s ease,box-shadow .24s ease;
+    }
+    body.dark .hero{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))}
+    .hero:hover{transform:translateY(-4px)}
+    .hero .left{flex:1}
+    .hero h2{margin:0;font-size:22px}
+    .hero p{margin:8px 0 0;color:var(--muted)}
+    .hero .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;
+      font-size:14px;border:0;cursor:pointer;
+    }
+    .btn-primary{background:var(--green-1);color:white;box-shadow: 0 8px 20px rgba(11,132,87,0.12)}
+    .btn-outline{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--green-1)}
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(16,24,32,0.04)}
+    .list{list-style:none;padding:0;margin:0}
+    .list li{padding:10px 0;border-bottom:1px dashed rgba(11,132,87,0.06)}
+    .muted{color:var(--muted);font-size:14px}
+    .article-card{padding:12px;border-radius:10px;border:1px solid rgba(11,132,87,0.06);margin-bottom:12px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:8px;display:block}
     .page{display:none}
     .page.active{display:block}
-    .list{list-style:none;padding:0;margin:0}
-    .list li{padding:8px 0;border-bottom:1px dashed #eef6ec}
-    .btn{display:inline-block;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700}
-    .btn-primary{background:var(--green1);color:white}
-    .responsive{width:100%;height:auto}
-    .article-card{padding:12px;border-radius:8px;border:1px solid #eef6ec;margin-bottom:10px}
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-    @media (max-width:900px){.grid{grid-template-columns:repeat(6,1fr)}.col-8{grid-column:span 6}.col-4{grid-column:span 6}nav a{display:inline-block;margin:6px 8px 0 0}}
+    footer{padding:20px;text-align:center;color:var(--muted);margin-top:18px}
+    /* back-to-top */
+    .to-top{
+      position:fixed;right:18px;bottom:18px;background:var(--green-1);color:white;padding:12px;border-radius:12px;border:none;
+      box-shadow:0 10px 24px rgba(11,132,87,0.18);cursor:pointer;display:none;z-index:50;
+    }
+    /* responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+      .mobile-nav-toggle{display:inline-flex}
+    }
+    @media (max-width:540px){
+      .gallery-grid{grid-template-columns:repeat(1,1fr)}.hero{flex-direction:column;align-items:flex-start}
+    }
+    /* small helpers */
+    .small{font-size:13px;color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+    a.external{color:var(--green-1);text-decoration:none;font-weight:600}
+    /* subtle focus */
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(11,132,87,0.12);outline-offset:2px}
   </style>
 </head>
 <body>
+
   <header>
-    <div class="container">
-      <div class="brand">
-        <div style="width:48px;height:48px;border-radius:8px;background:white;color:var(--green1);display:flex;align-items:center;justify-content:center;font-weight:800">DAK</div>
+    <div class="container header-inner" role="banner">
+      <div class="brand" style="gap:12px">
+        <div class="logo" aria-hidden="true">DAK</div>
         <div>
-          <h1>Komunitas Dakwah Al-Hikmah</h1>
-          <div style="font-size:13px;opacity:0.9">Tebarkan ilmu, hidupkan hati</div>
+          <h1 style="margin:0;font-size:16px">Komunitas Dakwah Al-Hikmah</h1>
+          <small class="small">Tebarkan ilmu, hidupkan hati</small>
         </div>
       </div>
-      <nav id="nav">
-        <a href="#home" data-page="home" class="active">Beranda</a>
+
+      <nav role="navigation" aria-label="Main Navigation">
+        <a href="#home" data-page="home" aria-current="page">Beranda</a>
         <a href="#tentang" data-page="tentang">Tentang</a>
         <a href="#program" data-page="program">Program</a>
         <a href="#kegiatan" data-page="kegiatan">Kegiatan</a>
         <a href="#kajian" data-page="kajian">Kajian</a>
-        <a href="#khutbah" data-page="khutbah">Khutbah</a>
         <a href="#artikel" data-page="artikel">Artikel</a>
         <a href="#galeri" data-page="galeri">Galeri</a>
         <a href="#donasi" data-page="donasi">Donasi</a>
         <a href="#kontak" data-page="kontak">Kontak</a>
       </nav>
+
+      <div class="controls">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark / Light mode">🌓</button>
+        <a class="icon-btn" href="https://wa.me/6285179828931" target="_blank" rel="noopener" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main">
+    <!-- HOME -->
+    <section id="home" class="page active" tabindex="-1">
+      <div class="hero card" role="region" aria-label="Hero">
+        <div class="left">
+          <h2>Selamat datang — Komunitas Dakwah Al-Hikmah</h2>
+          <p class="muted">Tempat belajar, praktik, dan berkarya bersama. Kajian ringkas, khutbah, artikel praktis, dan dokumentasi kegiatan.</p>
 
-    <!-- PAGE: HOME -->
-    <section id="home" class="page active">
-      <div class="hero card">
-        <h2>Selamat datang di Komunitas Dakwah Al-Hikmah</h2>
-        <p>Komunitas dakwah muda: tempat belajar, praktek, dan berkarya bersama. Di sini kami kumpulkan kajian singkat, khutbah, artikel praktis, dan dokumentasi kegiatan.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="#kajian">Lihat Kajian</a>
-          <a class="btn" href="#kontak">Hubungi Kami</a>
+          <div class="cta">
+            <a class="btn btn-primary" href="#kajian" data-page-link>Lihat Kajian</a>
+            <a class="btn btn-outline" href="#kontak" data-page-link>Hubungi Kami</a>
+          </div>
+        </div>
+
+        <div style="min-width:260px;max-width:320px">
+          <div class="card" style="padding:12px;border-radius:10px">
+            <div class="small">Kutipan hari ini</div>
+            <div id="randomQuote" style="margin-top:8px;font-weight:700">Memuat…</div>
+            <div class="small" style="margin-top:8px">Klik untuk memutar ulang</div>
+            <button id="refreshQuote" class="btn" style="margin-top:8px;padding:8px 10px;border-radius:8px">🔁 Refresh</button>
+          </div>
         </div>
       </div>
 
-      <div style="margin-top:20px" class="grid">
-        <div class="card col-8">
-          <h3>Jadwal Terbaru</h3>
-          <ul class="list">
-            <li><strong>Senin, 19:00</strong> — Kajian Tafsir (Ust. Ahmad Fauzi)</li>
-            <li><strong>Rabu, 19:00</strong> — Kajian Fiqh (Ust. Siti)</li>
-            <li><strong>Jumat, 12:00</strong> — Kajian Umum</li>
-          </ul>
+      <div class="grid">
+        <div>
+          <div class="card">
+            <h3>Jadwal Terbaru</h3>
+            <ul class="list" aria-live="polite">
+              <li><strong>Senin, 19:00</strong> — Kajian Tafsir (Ust. Ahmad Fauzi)</li>
+              <li><strong>Rabu, 19:00</strong> — Kajian Fiqh (Ust. Siti)</li>
+              <li><strong>Jumat, 12:00</strong> — Kajian Umum</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <h3>Artikel Terbaru</h3>
+            <div class="article-card">
+              <h4 style="margin:0 0 8px 0">Cara Menyampaikan Dakwah yang Ramah</h4>
+              <p class="muted" style="margin:0">Bahas cara berdakwah dengan bahasa yang mudah dimengerti dan contoh pendek membuka percakapan spiritual.</p>
+            </div>
+            <div class="article-card">
+              <h4 style="margin:0 0 8px 0">Menumbuhkan Kebiasaan Dzikir</h4>
+              <p class="muted" style="margin:0">Langkah praktis membuat dzikir jadi rutinitas: tempat, waktu, pengingat.</p>
+            </div>
+          </div>
         </div>
-        <div class="card col-4">
-          <h3>Info Cepat</h3>
-          <p>Kontak: 0851-7982-8931</p>
-        </div>
+
+        <aside>
+          <div class="card">
+            <h3>Info Cepat</h3>
+            <p class="muted">Kontak: <a class="external" href="https://wa.me/6285179828931" target="_blank">0851-7982-8931</a></p>
+            <p class="small">Alamat kegiatan: Masjid Al-Hikmah (Contoh)</p>
+            <a class="btn btn-outline" href="#galeri" data-page-link style="margin-top:8px;display:inline-block">Lihat Galeri</a>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- PAGE: TENTANG -->
-    <section id="tentang" class="page">
+    <!-- TENTANG -->
+    <section id="tentang" class="page" tabindex="-1">
       <div class="card">
         <h2>Tentang Kami</h2>
-        <p>Komunitas Dakwah Al-Hikmah adalah komunitas dakwah muda yang fokus pada kajian ringkas, pembinaan akhlak, dan kegiatan sosial. Kami mengedepankan cara penyampaian yang ringan, relevan, dan mudah dipraktikkan.</p>
+        <p class="muted">Komunitas Dakwah Al-Hikmah adalah komunitas dakwah muda yang fokus pada kajian ringkas, pembinaan akhlak, dan kegiatan sosial. Kami mengedepankan cara penyampaian yang ringan, relevan, dan mudah dipraktikkan.</p>
       </div>
     </section>
 
-    <!-- PAGE: PROGRAM -->
-    <section id="program" class="page">
+    <!-- PROGRAM -->
+    <section id="program" class="page" tabindex="-1">
       <div class="card">
         <h2>Program Rutin</h2>
         <ul>
@@ -111,125 +234,80 @@
       </div>
     </section>
 
-    <!-- PAGE: KEGIATAN -->
-    <section id="kegiatan" class="page">
+    <!-- KEGIATAN -->
+    <section id="kegiatan" class="page" tabindex="-1">
       <div class="card">
         <h2>Agenda Kegiatan</h2>
-        <p>Contoh kegiatan komunitas yang sering kami lakukan:</p>
-        <ol>
-          <li>Pengajian rutin & study circle</li>
-          <li>Bakti sosial dan pembagian paket</li>
-          <li>Kajian akbar & workshop</li>
-        </ol>
+        <p class="muted">Contoh kegiatan komunitas: pengajian rutin, bakti sosial, kajian akbar, workshop.</p>
       </div>
     </section>
 
-    <!-- PAGE: KAJIAN -->
-    <section id="kajian" class="page">
+    <!-- KAJIAN -->
+    <section id="kajian" class="page" tabindex="-1">
       <div class="card">
-        <h2>Kajian: Tafsir Surah Al‑Mulk</h2>
-        <p><strong>Pemateri:</strong> Ust. Ahmad Fauzi</p>
-        <p><strong>Ringkasan:</strong> Kajian ini membahas ayat‑ayat penting dari Surah Al‑Mulk, menyoroti pesan perlindungan Allah, hikmah ciptaan, dan panggilan untuk merenung. Disampaikan dengan bahasa santai namun padat pesan untuk diaplikasikan sehari‑hari.</p>
-        <h3>Pokok bahasan singkat</h3>
-        <ul>
-          <li>Makna tema: kerajaan (mulk) dan kekuasaan Allah</li>
-          <li>Ayat tentang tanda‑tanda ciptaan sebagai pesan tauhid</li>
-          <li>Refleksi: bagaimana Al‑Mulk mengajak kita untuk introspeksi</li>
-          <li>Praktik: amalan sederhana untuk menumbuhkan rasa syukur</li>
-        </ul>
-        <p><strong>Manfaat ikut kajian:</strong> Menambah wawasan tafsir, memperkuat iman melalui pemahaman ayat, dan mendapatkan doa serta amalan harian sederhana.</p>
+        <h2>Kajian: Tafsir Surah Al-Mulk</h2>
+        <p class="muted"><strong>Pemateri:</strong> Ust. Ahmad Fauzi</p>
+        <p class="muted">Ringkasan kajian, pokok bahasan, dan manfaat mengikuti kajian.</p>
       </div>
     </section>
 
-    <!-- PAGE: KHUTBAH -->
-    <section id="khutbah" class="page">
-      <div class="card">
-        <h2>Khutbah: Menjaga Lisan dalam Kehidupan</h2>
-        <p><em>Gaya: santai & komunikatif</em></p>
-
-        <h3>Muqaddimah</h3>
-        <p>Assalamu'alaikum warahmatullahi wabarakatuh. Teman‑teman semua, hari ini kita bahas topik yang sederhana tapi berdampak besar: lisan. Kita semua tahu, lisan itu kecil — tapi konsekuensinya bisa besar. Bisa membuat hati rileks atau hati terluka; bisa menumbuhkan ukhuwah atau memecah belah.</p>
-
-        <h3>Inti Khutbah</h3>
-        <p>Pertama, mari kita ingat beberapa ayat dan hadits singkat yang mengingatkan kita tentang lisan: Allah telah mengingatkan agar kita berkata baik atau diam. Nabi Muhammad ﷺ menekankan bahwa menjaga lisan termasuk bagian dari iman.</p>
-        <p>Kedua, praktik sehari‑hari: sebelum berbicara, tanya pada diri sendiri tiga hal — apakah yang akan aku ucapkan itu benar? apakah itu perlu? apakah itu bermanfaat? Kalau jawabannya tidak untuk salah satu, lebih baik ditahan. Praktik ini sederhana tapi sangat efektif untuk menekan ghibah, fitnah, dan omongan yang tidak perlu.</p>
-        <p>Ketiga, ketika terluka oleh perkataan orang lain, pilih respon yang menenangkan — jangan membalas dengan emosi. Kadang menjawab dengan sabar atau menunggu waktu hingga emosi reda adalah bentuk kekuatan, bukan kelemahan.</p>
-
-        <h3>Penutup & Doa</h3>
-        <p>Sekarang mari kita tutup: mari sama‑sama berusaha menjaga lisan kita. Mulai dari hal kecil — ucapan sehari‑hari, komentar di group chat, hingga cara kita berdakwah. Semoga Allah memudahkan kita berbicara yang baik dan menjaga hati. Aamiin.</p>
-        <p>Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
-      </div>
-    </section>
-
-    <!-- PAGE: ARTIKEL -->
-    <section id="artikel" class="page">
+    <!-- ARTIKEL -->
+    <section id="artikel" class="page" tabindex="-1">
       <div class="card">
         <h2>Artikel Ringan</h2>
-        <div class="article-card">
-          <h3>1. Cara Menyampaikan Dakwah yang Ramah</h3>
-          <p>Bahas cara berdakwah dengan bahasa yang mudah dimengerti, mengutamakan empati, dan contoh pendek bagaimana memulai percakapan spiritual dengan teman.</p>
-        </div>
-        <div class="article-card">
-          <h3>2. Menumbuhkan Kebiasaan Dzikir Sehari‑hari</h3>
-          <p>Langkah praktis membuat dzikir jadi rutinitas: tempat, waktu, pengingat sederhana, dan manfaat psikologisnya.</p>
-        </div>
-        <div class="article-card">
-          <h3>3. Etika Berdiskusi di Media Sosial</h3>
-          <p>Tips menjaga adab saat berdiskusi online: verifikasi, hormati lawan bicara, dan jangan ikut menyebarkan hoaks.</p>
-        </div>
-        <div class="article-card">
-          <h3>4. Mengelola Komunitas Dakwah untuk Pemula</h3>
-          <p>Panduan singkat membentuk kelompok kajian: pembagian tugas, jadwal, dan cara menarik peserta baru.</p>
-        </div>
+        <div class="article-card"><h4>1. Cara Menyampaikan Dakwah yang Ramah</h4><p class="muted">Bahas bahasa mudah, empati, contoh pendek.</p></div>
+        <div class="article-card"><h4>2. Menumbuhkan Kebiasaan Dzikir</h4><p class="muted">Langkah praktis dan manfaat psikologisnya.</p></div>
       </div>
     </section>
 
-    <!-- PAGE: GALERI -->
-    <section id="galeri" class="page">
+    <!-- GALERI -->
+    <section id="galeri" class="page" tabindex="-1">
       <div class="card">
         <h2>Galeri Kegiatan</h2>
-        <p>Dokumentasi kegiatan komunitas — foto asli acara dapat diunggah menggantikan gambar placeholder di bawah.</p>
-        <div class="gallery-grid">
-          <figure>
-            <img src="https://via.placeholder.com/800x500?text=Pengajian" alt="Pengajian" class="responsive">
-            <figcaption>Pengajian Rutin</figcaption>
-          </figure>
-          <figure>
-            <img src="https://via.placeholder.com/800x500?text=Bakti+Sosial" alt="Bakti Sosial" class="responsive">
-            <figcaption>Bakti Sosial</figcaption>
-          </figure>
-          <figure>
-            <img src="https://via.placeholder.com/800x500?text=Kajian+Akbar" alt="Kajian Akbar" class="responsive">
-            <figcaption>Kajian Akbar</figcaption>
-          </figure>
-          <figure>
-            <img src="https://via.placeholder.com/800x500?text=Pelatihan+Dakwah" alt="Pelatihan Dakwah" class="responsive">
-            <figcaption>Pelatihan Dakwah</figcaption>
-          </figure>
+        <p class="muted">Klik gambar untuk memperbesar.</p>
+        <div class="gallery-grid" id="gallery">
+          <a href="https://via.placeholder.com/1200x800?text=Pengajian" class="glightbox" data-gallery="alhikmah">
+            <img src="https://via.placeholder.com/800x500?text=Pengajian" alt="Pengajian" loading="lazy">
+          </a>
+          <a href="https://via.placeholder.com/1200x800?text=Bakti+Sosial" class="glightbox" data-gallery="alhikmah">
+            <img src="https://via.placeholder.com/800x500?text=Bakti+Sosial" alt="Bakti Sosial" loading="lazy">
+          </a>
+          <a href="https://via.placeholder.com/1200x800?text=Kajian+Akbar" class="glightbox" data-gallery="alhikmah">
+            <img src="https://via.placeholder.com/800x500?text=Kajian+Akbar" alt="Kajian Akbar" loading="lazy">
+          </a>
+          <a href="https://via.placeholder.com/1200x800?text=Pelatihan+Dakwah" class="glightbox" data-gallery="alhikmah">
+            <img src="https://via.placeholder.com/800x500?text=Pelatihan+Dakwah" alt="Pelatihan Dakwah" loading="lazy">
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- PAGE: DONASI -->
-    <section id="donasi" class="page">
+    <!-- DONASI -->
+    <section id="donasi" class="page" tabindex="-1">
       <div class="card">
         <h2>Donasi & Dukungan</h2>
-        <p>Jika ingin mendukung program, silakan hubungi pengurus melalui WhatsApp.</p>
+        <p class="muted">Jika ingin mendukung program, hubungi pengurus melalui WhatsApp atau transfer. Info rekening akan di-update di sini.</p>
       </div>
     </section>
 
-    <!-- PAGE: KONTAK -->
-    <section id="kontak" class="page">
+    <!-- KONTAK -->
+    <section id="kontak" class="page" tabindex="-1">
       <div class="card">
-        <h2>Kontak Kami</h2>
-        <p>WhatsApp: <a href="https://wa.me/6285179828931" target="_blank">0851-7982-8931</a></p>
-        <form onsubmit="event.preventDefault();alert('Form hanya demo — ganti action pada form untuk mengaktifkan.');">
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <input placeholder="Nama" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f2ea">
-            <input placeholder="Email/WA" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f2ea">
+        <h2>Kontak & Formulir</h2>
+        <p class="muted">Formulir akan mengirimkan pesan ke email pengurus via Formspree.</p>
+
+        <!-- NOTE: Ganti YOUR_FORMSPREE_ID dengan ID Formspree-mu (contoh: https://formspree.io/f/mayvlkdz) -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input name="name" required placeholder="Nama" aria-label="Nama" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f2ea">
+            <input name="email" required placeholder="Email atau WA" aria-label="Email atau WA" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6f2ea">
           </div>
-          <textarea placeholder="Pesan" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #e6f2ea"></textarea>
-          <div style="margin-top:8px"><button class="btn btn-primary">Kirim</button></div>
+          <textarea name="message" required placeholder="Pesan" aria-label="Pesan" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #e6f2ea;min-height:120px"></textarea>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+            <div class="small muted">Atau hubungi via <a class="external" href="https://wa.me/6285179828931" target="_blank">WhatsApp</a></div>
+          </div>
+          <div id="formStatus" role="status" aria-live="polite" style="margin-top:8px"></div>
         </form>
       </div>
     </section>
@@ -238,31 +316,156 @@
 
   <footer>
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
         <div>© <span id="year"></span> Komunitas Dakwah Al-Hikmah</div>
-        
+        <div class="small muted">Dibuat dengan <strong>desain modern</strong> — warna: hijau zamrud</div>
       </div>
     </div>
   </footer>
 
+  <button id="toTop" class="to-top" aria-label="Kembali ke atas">↑</button>
+
+  <!-- GLightbox script -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
   <script>
-    const pages = ['home','tentang','program','kegiatan','kajian','khutbah','artikel','galeri','donasi','kontak'];
+    // --- Basic SPA navigation using hash ---
+    const pages = ['home','tentang','program','kegiatan','kajian','artikel','galeri','donasi','kontak'];
     function showPage(page){
       pages.forEach(p=>{
         const el = document.getElementById(p);
         if(!el) return;
-        el.classList.toggle('active', p===page);
+        el.classList.toggle('active', p === page);
       });
-      document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active', a.dataset.page===page));
-      window.scrollTo(0,0);
+      // set nav aria-current
+      document.querySelectorAll('nav a').forEach(a=>{
+        a.setAttribute('aria-current', a.dataset.page === page ? 'page' : 'false');
+      });
+      // focus for accessibility
+      const current = document.getElementById(page);
+      if(current) current.focus();
+      window.scrollTo({top:0,behavior:'smooth'});
     }
     function parseHash(){
       const h = location.hash.replace('#','');
       return pages.includes(h) ? h : 'home';
     }
-    window.addEventListener('hashchange',()=>showPage(parseHash()));
+    window.addEventListener('hashchange', ()=> showPage(parseHash()));
+    document.querySelectorAll('a[data-page-link]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        location.hash = href;
+      });
+    });
+    // init
     showPage(parseHash());
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        // allow hash behavior handled by SPA; prevent default for anchors that link to same page
+        // but still allow focus/scroll when needed
+        // do nothing here because SPA uses hashchange
+      });
+    });
+
+    // --- Dark mode toggle with localStorage ---
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(dark){
+      document.body.classList.toggle('dark', dark);
+      themeToggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    }
+    const stored = localStorage.getItem('alhikmah_theme');
+    if(stored) setTheme(stored === 'dark');
+    else {
+      // prefer dark if user's system is dark
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark);
+    }
+    themeToggle.addEventListener('click', ()=>{
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('alhikmah_theme', isDark ? 'dark' : 'light');
+      setTheme(isDark);
+    });
+
+    // --- Random quote (ayat/hadits) ---
+    const quotes = [
+      {text: "“Barang siapa yang menunjukkan kebaikan maka baginya pahala seperti pahala orang yang melakukannya.”", source: "HR. Muslim"},
+      {text: "“Sesungguhnya bersama kesulitan ada kemudahan.”", source: "QS. Al-Insyirah:6"},
+      {text: "“Permudahkanlah dan jangan menyusahkan.”", source: "Hadits (ringkas)"},
+      {text: "“Perumpamaan orang beriman yang saling mencintai, saling mengasihi… bagaikan tubuh; jika satu bagian sakit, bagian lain akan merasa tidak enak.”", source: "HR. Bukhari & Muslim (ringkas)"},
+      {text: "“Berbuat baiklah kepada orang lain; maka itu akan membuat hati tenang.”", source: "Pesan umum"}
+    ];
+    function showQuote(){
+      const i = Math.floor(Math.random()*quotes.length);
+      const el = document.getElementById('randomQuote');
+      el.textContent = quotes[i].text;
+      const src = document.createElement('div');
+      src.className = 'small muted';
+      src.style.marginTop='6px';
+      src.textContent = quotes[i].source;
+      // remove previous source if exist
+      const old = el.parentNode.querySelector('.small.quote-source');
+      if(old) old.remove();
+      src.classList.add('quote-source');
+      el.parentNode.appendChild(src);
+    }
+    document.getElementById('refreshQuote').addEventListener('click', showQuote);
+    showQuote();
+
+    // --- GLightbox init for gallery ---
+    const lightbox = GLightbox({selector: '.glightbox'});
+
+    // --- Contact form handling with Formspree (AJAX) ---
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Mengirim...';
+      const data = new FormData(form);
+      // Replace action URL if you have a different endpoint
+      const url = form.getAttribute('action');
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if(res.ok){
+          status.textContent = 'Terima kasih — pesan berhasil dikirim.';
+          form.reset();
+        } else {
+          const json = await res.json();
+          status.textContent = json.error || 'Terjadi kesalahan. Coba lagi nanti.';
+        }
+      } catch(err){
+        status.textContent = 'Gagal mengirim — periksa koneksi atau ganti Formspree ID.';
+      }
+    });
+
+    // --- Back to top button ---
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    // --- Optional: keyboard shortcut "g" to focus gallery (useful saat presentasi) ---
+    window.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='g') {
+        location.hash = '#galeri';
+      }
+    });
+
+    // Accessibility: enable hash change navigation when user clicks nav links
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        const page = a.getAttribute('data-page');
+        location.hash = page;
+      });
+    });
   </script>
 </body>
 </html>
