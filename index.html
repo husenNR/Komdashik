@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Komunitas Dakwah Al-Hikmah</title>
-  <meta name="description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan kegiatan.">
-  <meta name="keywords" content="dakwah, kajian, khutbah, komunitas, islam">
+  <meta name="description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan program dakwah.">
+  <meta name="keywords" content="dakwah, kajian, khutbah, komunitas, islam, ustadz">
   <meta property="og:title" content="Komunitas Dakwah Al-Hikmah">
-  <meta property="og:description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan kegiatan.">
+  <meta property="og:description" content="Komunitas Dakwah Al-Hikmah — kajian, khutbah, artikel, galeri, dan program dakwah.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Komunitas Dakwah Al-Hikmah">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
@@ -57,7 +57,7 @@
       color:white;padding:14px 0;
       box-shadow:0 6px 16px rgba(11,132,87,0.12);
     }
-    .header-inner{display:flex;align-items:center;gap:14px;justify-content:space-between}
+    .header-inner{display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap}
     .brand{display:flex;gap:12px;align-items:center}
     .logo{
       width:52px;height:52px;border-radius:10px;background:white;color:var(--green-1);
@@ -66,9 +66,9 @@
     }
     .brand h1{font-size:18px;margin:0}
     .brand small{display:block;font-size:12px;opacity:.92}
-    nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:6px 10px;border-radius:8px;font-weight:600;font-size:14px}
-    nav a[aria-current="page"]{background:rgba(255,255,255,0.12);box-shadow:inset 0 -2px 0 rgba(255,255,255,0.06)}
+    nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:6px 10px;border-radius:8px;font-weight:600;font-size:13px}
+    nav a[aria-current="page"]{background:rgba(255,255,255,0.12)}
     .controls{display:flex;gap:8px;align-items:center}
     .icon-btn{background:transparent;border:none;color:white;padding:8px;border-radius:8px;cursor:pointer}
     .icon-btn:focus{outline:2px solid rgba(255,255,255,0.18)}
@@ -107,20 +107,16 @@
       box-shadow:0 10px 24px rgba(11,132,87,0.18);cursor:pointer;display:none;z-index:50;
     }
     /* responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr;}.gallery-grid{grid-template-columns:repeat(2,1fr)}
-      nav{display:none}
-      .mobile-nav-toggle{display:inline-flex}
-    }
-    @media (max-width:540px){
-      .gallery-grid{grid-template-columns:repeat(1,1fr)}.hero{flex-direction:column;align-items:flex-start}
-    }
-    /* small helpers */
+    @media (max-width:1000px){ .grid{grid-template-columns:1fr} nav{display:none} .mobile-nav-toggle{display:inline-flex} }
+    @media (max-width:540px){ .gallery-grid{grid-template-columns:repeat(1,1fr)} .hero{flex-direction:column;align-items:flex-start} }
     .small{font-size:13px;color:var(--muted)}
-    .center{display:flex;align-items:center;justify-content:center}
     a.external{color:var(--green-1);text-decoration:none;font-weight:600}
-    /* subtle focus */
     a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(11,132,87,0.12);outline-offset:2px}
+    /* page-specific helpers */
+    .profile-grid{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+    .illustration{width:100%;height:220px;object-fit:cover;border-radius:10px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){ .two-col{grid-template-columns:1fr} .profile-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -139,17 +135,29 @@
         <a href="#home" data-page="home" aria-current="page">Beranda</a>
         <a href="#tentang" data-page="tentang">Tentang</a>
         <a href="#program" data-page="program">Program</a>
+        <a href="#program-online" data-page="program-online">Program Online</a>
+        <a href="#profil-ustadz" data-page="profil-ustadz">Profil Ustadz</a>
         <a href="#kegiatan" data-page="kegiatan">Kegiatan</a>
         <a href="#kajian" data-page="kajian">Kajian</a>
         <a href="#artikel" data-page="artikel">Artikel</a>
+        <a href="#artikel-tematik" data-page="artikel-tematik">Artikel Tematik</a>
         <a href="#galeri" data-page="galeri">Galeri</a>
+        <a href="#kisah-teladan" data-page="kisah-teladan">Kisah Teladan</a>
+        <a href="#doa-harian" data-page="doa-harian">Doa Harian</a>
+        <a href="#fiqih-harian" data-page="fiqih-harian">Fiqih Sehari-hari</a>
+        <a href="#amar-maruf" data-page="amar-maruf">Amar Ma'ruf</a>
+        <a href="#ukhuwah" data-page="ukhuwah">Ukhuwah</a>
+        <a href="#motivasi-iman" data-page="motivasi-iman">Motivasi</a>
+        <a href="#persiapan-akhirat" data-page="persiapan-akhirat">Akhirat</a>
         <a href="#donasi" data-page="donasi">Donasi</a>
         <a href="#kontak" data-page="kontak">Kontak</a>
       </nav>
 
       <div class="controls">
         <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode" title="Dark / Light mode">🌓</button>
-        <a class="icon-btn" href="https://wa.me/6285179828931" target="_blank" rel="noopener" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+        <a class="icon-btn" href="https://wa.me/6285179828031" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </a>
       </div>
     </div>
   </header>
@@ -193,7 +201,7 @@
             <h3>Artikel Terbaru</h3>
             <div class="article-card">
               <h4 style="margin:0 0 8px 0">Cara Menyampaikan Dakwah yang Ramah</h4>
-              <p class="muted" style="margin:0">Bahas cara berdakwah dengan bahasa yang mudah dimengerti dan contoh pendek membuka percakapan spiritual.</p>
+              <p class="muted" style="margin:0">Bahas bahasa mudah, empati, contoh pendek membuka percakapan spiritual.</p>
             </div>
             <div class="article-card">
               <h4 style="margin:0 0 8px 0">Menumbuhkan Kebiasaan Dzikir</h4>
@@ -205,7 +213,7 @@
         <aside>
           <div class="card">
             <h3>Info Cepat</h3>
-            <p class="muted">Kontak: <a class="external" href="https://wa.me/6285179828931" target="_blank">0851-7982-8931</a></p>
+            <p class="muted">Kontak: <a class="external" href="https://wa.me/6285179828031" target="_blank">0851-7982-8031</a></p>
             <p class="small">Alamat kegiatan: Masjid Al-Hikmah (Contoh)</p>
             <a class="btn btn-outline" href="#galeri" data-page-link style="margin-top:8px;display:inline-block">Lihat Galeri</a>
           </div>
@@ -221,7 +229,7 @@
       </div>
     </section>
 
-    <!-- PROGRAM -->
+    <!-- PROGRAM (existing) -->
     <section id="program" class="page" tabindex="-1">
       <div class="card">
         <h2>Program Rutin</h2>
@@ -234,15 +242,66 @@
       </div>
     </section>
 
-    <!-- KEGIATAN -->
+    <!-- NEW PAGE 1: Program Dakwah Online -->
+    <section id="program-online" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Program Dakwah Online</h2>
+        <img class="illustration" src="https://via.placeholder.com/1200x400?text=Program+Online" alt="Program Online" loading="lazy">
+        <p class="muted"><strong>Kutipan:</strong> "Gunakan ilmu untuk manfaat umat." — (inspirasional)</p>
+        <p>Kami menjalankan sejumlah program dakwah berbasis online agar pesan dakwah dapat menjangkau lebih banyak orang tanpa batas tempat. Beberapa platform yang digunakan: YouTube live, Zoom untuk workshop, dan Instagram/Telegram untuk pengumuman.</p>
+        <h3>Jenis program online</h3>
+        <ul class="list">
+          <li>Live Kajian Mingguan (YouTube Live)</li>
+          <li>Workshop Dakwah: komunikasi & public speaking (Zoom)</li>
+          <li>Seri Kajian Singkat di Instagram Reels</li>
+          <li>Channel Telegram: pengingat kajian & materi ringkas</li>
+        </ul>
+        <p class="small muted">Catatan: Sertakan link acara di postingan atau deskripsi video agar peserta mudah bergabung.</p>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 2: Profil Ustadz & Pemateri -->
+    <section id="profil-ustadz" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Profil Ustadz & Pemateri</h2>
+        <div class="profile-grid" style="margin-top:12px">
+          <img src="https://via.placeholder.com/300x300?text=Ustadz+Ahmad" alt="Ustadz Ahmad" class="illustration" loading="lazy">
+          <div>
+            <h3>Ust. Ahmad Fauzi</h3>
+            <p class="muted"><em>Fokus:</em> Tafsir & Aqidah</p>
+            <p>Ust. Ahmad aktif mengisi kajian tafsir mingguan dan memiliki pendekatan praktis, menjadikan materi mudah dipahami dan diaplikasikan.</p>
+            <div class="small muted">Kutipan singkat: "Pahami ayat, lalu amalkan." — Ust. Ahmad</div>
+          </div>
+        </div>
+
+        <hr style="margin:12px 0">
+        <div class="profile-grid" style="margin-top:12px">
+          <img src="https://via.placeholder.com/300x300?text=Ustadz+Siti" alt="Ustadz Siti" class="illustration" loading="lazy">
+          <div>
+            <h3>Ust. Siti Rahma</h3>
+            <p class="muted"><em>Fokus:</em> Fiqh & Keluarga</p>
+            <p>Ust. Siti mengisi kajian fiqh praktis serta pelatihan komunikasi keluarga yang ramah dan solutif.</p>
+            <div class="small muted">Kutipan singkat: "Ibadah dalam keluarga adalah madrasah pertama." — Ust. Siti</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEGIATAN (existing) -->
     <section id="kegiatan" class="page" tabindex="-1">
       <div class="card">
         <h2>Agenda Kegiatan</h2>
         <p class="muted">Contoh kegiatan komunitas: pengajian rutin, bakti sosial, kajian akbar, workshop.</p>
+        <h3>Rencana 3 Bulan</h3>
+        <ul class="list">
+          <li>Monthly: Kajian Anak (setiap Sabtu)</li>
+          <li>Quarterly: Kajian Akbar & Penggalangan Donasi</li>
+          <li>Program khusus: Pelatihan Dakwah Remaja</li>
+        </ul>
       </div>
     </section>
 
-    <!-- KAJIAN -->
+    <!-- KAJIAN (existing) -->
     <section id="kajian" class="page" tabindex="-1">
       <div class="card">
         <h2>Kajian: Tafsir Surah Al-Mulk</h2>
@@ -251,7 +310,7 @@
       </div>
     </section>
 
-    <!-- ARTIKEL -->
+    <!-- ARTIKEL (existing) -->
     <section id="artikel" class="page" tabindex="-1">
       <div class="card">
         <h2>Artikel Ringan</h2>
@@ -260,25 +319,168 @@
       </div>
     </section>
 
-    <!-- GALERI -->
+    <!-- NEW PAGE 3: Artikel Tematik -->
+    <section id="artikel-tematik" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Artikel Tematik</h2>
+        <p class="muted">Kumpulan artikel yang dibagi per tema untuk memudahkan pembelajaran.</p>
+
+        <div class="two-col" style="margin-top:12px">
+          <div>
+            <h3>A. Akhlak</h3>
+            <p class="muted">Etiquette dan akhlak terpuji dalam kehidupan sehari-hari.</p>
+            <ul class="list">
+              <li>Etika berbicara & menasihati</li>
+              <li>Mendidik anak dengan kasih sayang</li>
+              <li>Menerapkan sabar dan ikhlas</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>B. Tauhid & Aqidah</h3>
+            <p class="muted">Dasar-dasar aqidah sebagai pondasi iman.</p>
+            <ul class="list">
+              <li>Pengenalan tauhid</li>
+              <li>Menjaga akidah dari penyimpangan</li>
+              <li>Pentingnya memahami ayat-ayat tauhid</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI (existing) -->
     <section id="galeri" class="page" tabindex="-1">
       <div class="card">
         <h2>Galeri Kegiatan</h2>
         <p class="muted">Klik gambar untuk memperbesar.</p>
         <div class="gallery-grid" id="gallery">
-          <a href="https://via.placeholder.com/1200x800?text=Pengajian" class="glightbox" data-gallery="alhikmah">
-            <img src="https://via.placeholder.com/800x500?text=Pengajian" alt="Pengajian" loading="lazy">
-          </a>
-          <a href="https://via.placeholder.com/1200x800?text=Bakti+Sosial" class="glightbox" data-gallery="alhikmah">
-            <img src="https://via.placeholder.com/800x500?text=Bakti+Sosial" alt="Bakti Sosial" loading="lazy">
-          </a>
-          <a href="https://via.placeholder.com/1200x800?text=Kajian+Akbar" class="glightbox" data-gallery="alhikmah">
-            <img src="https://via.placeholder.com/800x500?text=Kajian+Akbar" alt="Kajian Akbar" loading="lazy">
-          </a>
-          <a href="https://via.placeholder.com/1200x800?text=Pelatihan+Dakwah" class="glightbox" data-gallery="alhikmah">
-            <img src="https://via.placeholder.com/800x500?text=Pelatihan+Dakwah" alt="Pelatihan Dakwah" loading="lazy">
-          </a>
+          <a href="https://via.placeholder.com/1200x800?text=Pengajian" class="glightbox" data-gallery="alhikmah"><img src="https://via.placeholder.com/800x500?text=Pengajian" alt="Pengajian" loading="lazy"></a>
+          <a href="https://via.placeholder.com/1200x800?text=Bakti+Sosial" class="glightbox" data-gallery="alhikmah"><img src="https://via.placeholder.com/800x500?text=Bakti+Sosial" alt="Bakti Sosial" loading="lazy"></a>
+          <a href="https://via.placeholder.com/1200x800?text=Kajian+Akbar" class="glightbox" data-gallery="alhikmah"><img src="https://via.placeholder.com/800x500?text=Kajian+Akbar" alt="Kajian Akbar" loading="lazy"></a>
+          <a href="https://via.placeholder.com/1200x800?text=Pelatihan+Dakwah" class="glightbox" data-gallery="alhikmah"><img src="https://via.placeholder.com/800x500?text=Pelatihan+Dakwah" alt="Pelatihan Dakwah" loading="lazy"></a>
         </div>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 4: Kisah Teladan -->
+    <section id="kisah-teladan" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Kisah Teladan</h2>
+        <img class="illustration" src="https://via.placeholder.com/1200x400?text=Kisah+Teladan" alt="Kisah Teladan" loading="lazy">
+        <p class="muted"><strong>Kisah:</strong> Hikmah dari sahabat dan ulama.</p>
+        <article>
+          <h3>Kisah singkat: Khalid bin Walid — keteguhan & strategi</h3>
+          <p>Khalid bin Walid dikenal sebagai perwira tangguh yang kemudian menjadi Muslim yang kokoh. Kisahnya mengajarkan pentingnya keteguhan, keahlian, dan niat yang lurus dalam berjuang untuk kebenaran.</p>
+        </article>
+        <h4>Pelajaran utama</h4>
+        <ul class="list">
+          <li>Perbaiki niat sebelum bertindak</li>
+          <li>Ilmu dan strategi penting dalam dakwah</li>
+          <li>Kesabaran dan tawakal dalam menghadapi ujian</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 5: Doa Harian -->
+    <section id="doa-harian" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Doa Harian</h2>
+        <p class="muted">Kumpulan doa singkat yang sering digunakan sehari-hari (Arab — Terjemah singkat).</p>
+        <div class="two-col" style="margin-top:12px">
+          <div>
+            <h4>1. Doa sebelum tidur</h4>
+            <p class="muted">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا — "Ya Allah dengan nama-Mu aku mati dan hidup."</p>
+          </div>
+          <div>
+            <h4>2. Doa ketika memulai aktivitas</h4>
+            <p class="muted">بِسْمِ اللهِ — "Dengan nama Allah (aku memulai)." </p>
+          </div>
+        </div>
+        <h4 style="margin-top:12px">Daftar singkat doa</h4>
+        <ol class="list">
+          <li>Doa masuk rumah</li>
+          <li>Doa keluar rumah</li>
+          <li>Doa sebelum makan</li>
+          <li>Doa setelah wudhu</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 6: Fiqih Sehari-hari -->
+    <section id="fiqih-harian" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Fiqih Sehari-hari</h2>
+        <p class="muted">Panduan praktis singkat untuk ibadah dan adab sehari-hari.</p>
+        <h3>Pokok-pokok penting</h3>
+        <ul class="list">
+          <li>Wudhu yang benar (tata cara singkat)</li>
+          <li>Adab shalat berjamaah</li>
+          <li>Perilaku dalam majelis ilmu</li>
+        </ul>
+        <p class="small muted">Sumber: ringkasan fiqih praktis untuk kebutuhan harian (disarankan konsultasi lebih lanjut pada ustadz berkompeten untuk kasus spesifik).</p>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 7: Amar Ma'ruf Nahi Munkar -->
+    <section id="amar-maruf" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Amar Ma'ruf & Nahi Munkar</h2>
+        <p class="muted">Konsep amar ma'ruf nahi munkar dalam konteks modern dan cara praktis menerapkannya secara bijak.</p>
+        <h3>Langkah-langkah praktis</h3>
+        <ul class="list">
+          <li>Awali dengan diri sendiri: teladan</li>
+          <li>Nasihat dengan hikmah dan lemah lembut</li>
+          <li>Gunakan medium yang tepat: tatap muka, pesan pribadi, atau kampanye sosial</li>
+        </ul>
+        <p class="small muted">Kutipan: "Serulah kepada jalan Tuhanmu dengan hikmah dan nasihat yang baik." (Aplikasi prinsip moral dalam keseharian.)</p>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 8: Ukhuwah Islamiyah -->
+    <section id="ukhuwah" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Ukhuwah Islamiyah</h2>
+        <img class="illustration" src="https://via.placeholder.com/1200x400?text=Ukhuwah" alt="Ukhuwah" loading="lazy">
+        <p class="muted">Tips menjaga persaudaraan dalam komunitas dan keluarga.</p>
+        <h3>Praktik menjaga ukhuwah</h3>
+        <ul class="list">
+          <li>Silaturahim rutin</li>
+          <li>Forum diskusi yang penuh adab</li>
+          <li>Program pendampingan bagi anggota baru</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 9: Motivasi Iman -->
+    <section id="motivasi-iman" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Motivasi Iman</h2>
+        <p class="muted">Nasehat singkat dan renungan untuk memperkuat keimanan sehari-hari.</p>
+        <blockquote style="margin:12px 0;padding:12px;border-left:4px solid var(--green-1);background:rgba(11,132,87,0.04)">
+          "Sesungguhnya bersama kesulitan ada kemudahan." — QS. Al-Insyirah:6
+        </blockquote>
+        <h3>Poin renungan</h3>
+        <ul class="list">
+          <li>Jadikan ujian sebagai wasilah meningkatkan keteguhan</li>
+          <li>Praktik rasa syukur sederhana setiap hari</li>
+          <li>Bergaul dengan komunitas yang menguatkan iman</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NEW PAGE 10: Persiapan Akhirat -->
+    <section id="persiapan-akhirat" class="page" tabindex="-1">
+      <div class="card">
+        <h2>Persiapan Akhirat</h2>
+        <p class="muted">Renungan dan bekal amal agar selalu siap menghadapi akhirat.</p>
+        <h3>Langkah praktis</h3>
+        <ul class="list">
+          <li>Perbanyak amalan sunnah: sedekah, dzikir, shalat dhuha</li>
+          <li>Perbaiki hubungan antar sesama</li>
+          <li>Pelajari prinsip akhirat: tawadhu' & taqwa</li>
+        </ul>
+        <p class="small muted">Kutipan: "Beramallah karena tiap amal akan dipertanggungjawabkan." (Perlu optimasi amalan terus-menerus.)</p>
       </div>
     </section>
 
@@ -305,7 +507,7 @@
           <textarea name="message" required placeholder="Pesan" aria-label="Pesan" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #e6f2ea;min-height:120px"></textarea>
           <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
             <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-            <div class="small muted">Atau hubungi via <a class="external" href="https://wa.me/6285179828931" target="_blank">WhatsApp</a></div>
+            <div class="small muted">Atau hubungi via <a class="external" href="https://wa.me/6285179828031" target="_blank">WhatsApp</a></div>
           </div>
           <div id="formStatus" role="status" aria-live="polite" style="margin-top:8px"></div>
         </form>
@@ -329,8 +531,14 @@
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
   <script>
-    // --- Basic SPA navigation using hash ---
-    const pages = ['home','tentang','program','kegiatan','kajian','artikel','galeri','donasi','kontak'];
+    // --- Pages list (updated to include new pages) ---
+    const pages = [
+      'home','tentang','program','program-online','profil-ustadz','kegiatan',
+      'kajian','artikel','artikel-tematik','galeri','kisah-teladan','doa-harian',
+      'fiqih-harian','amar-maruf','ukhuwah','motivasi-iman','persiapan-akhirat',
+      'donasi','kontak'
+    ];
+
     function showPage(page){
       pages.forEach(p=>{
         const el = document.getElementById(p);
@@ -361,15 +569,6 @@
     showPage(parseHash());
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        // allow hash behavior handled by SPA; prevent default for anchors that link to same page
-        // but still allow focus/scroll when needed
-        // do nothing here because SPA uses hashchange
-      });
-    });
-
     // --- Dark mode toggle with localStorage ---
     const themeToggle = document.getElementById('themeToggle');
     function setTheme(dark){
@@ -379,7 +578,6 @@
     const stored = localStorage.getItem('alhikmah_theme');
     if(stored) setTheme(stored === 'dark');
     else {
-      // prefer dark if user's system is dark
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(prefersDark);
     }
@@ -395,7 +593,8 @@
       {text: "“Sesungguhnya bersama kesulitan ada kemudahan.”", source: "QS. Al-Insyirah:6"},
       {text: "“Permudahkanlah dan jangan menyusahkan.”", source: "Hadits (ringkas)"},
       {text: "“Perumpamaan orang beriman yang saling mencintai, saling mengasihi… bagaikan tubuh; jika satu bagian sakit, bagian lain akan merasa tidak enak.”", source: "HR. Bukhari & Muslim (ringkas)"},
-      {text: "“Berbuat baiklah kepada orang lain; maka itu akan membuat hati tenang.”", source: "Pesan umum"}
+      {text: "“Berbuat baiklah kepada orang lain; maka itu akan membuat hati tenang.”", source: "Pesan umum"},
+      {text: "“Tuntutlah ilmu dari buaian hingga liang lahat.”", source: "Peribahasa inspiratif"}
     ];
     function showQuote(){
       const i = Math.floor(Math.random()*quotes.length);
@@ -405,7 +604,6 @@
       src.className = 'small muted';
       src.style.marginTop='6px';
       src.textContent = quotes[i].source;
-      // remove previous source if exist
       const old = el.parentNode.querySelector('.small.quote-source');
       if(old) old.remove();
       src.classList.add('quote-source');
@@ -424,7 +622,6 @@
       e.preventDefault();
       status.textContent = 'Mengirim...';
       const data = new FormData(form);
-      // Replace action URL if you have a different endpoint
       const url = form.getAttribute('action');
       try {
         const res = await fetch(url, {
@@ -451,11 +648,9 @@
     });
     toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
 
-    // --- Optional: keyboard shortcut "g" to focus gallery (useful saat presentasi) ---
+    // --- Keyboard shortcut "g" to focus gallery ---
     window.addEventListener('keydown', (e)=>{
-      if(e.key.toLowerCase()==='g') {
-        location.hash = '#galeri';
-      }
+      if(e.key.toLowerCase()==='g') { location.hash = '#galeri'; }
     });
 
     // Accessibility: enable hash change navigation when user clicks nav links
