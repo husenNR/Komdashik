@@ -1,0 +1,4 @@
+
+body { font-family: 'Poppins', sans-serif; text-align: center; background: #f7fff7; color: #1b4332; margin: 0; }
+header, footer { padding: 20px; }
+.whatsapp-float { position: fixed; bottom: 15px; right: 15px; background: #25d366; color: white; padding: 10px 15px; border-radius: 50px; text-decoration: none; }
